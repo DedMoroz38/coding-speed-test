@@ -1,0 +1,9 @@
+.correct {
+  opacity: 1 !important;
+}
+
+.incorrect {
+  opacity: 1 !important;
+  color: red !important;
+}
+/*# sourceMappingURL=Main.module.css.map */
