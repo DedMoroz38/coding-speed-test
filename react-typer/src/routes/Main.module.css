@@ -2,8 +2,16 @@
   opacity: 1 !important;
 }
 
-.incorrect {
+.incorrect, .incorrectSpace {
   opacity: 1 !important;
   color: red !important;
+}
+
+.incorrectSpace {
+  width: 10px;
+}
+
+.incorrectSpace::before {
+  content: "_";
 }
 /*# sourceMappingURL=Main.module.css.map */

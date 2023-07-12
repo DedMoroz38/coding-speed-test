@@ -1,5 +1,6 @@
 import React, { RefObject } from "react";
 import styled from "styled-components";
+import { updateImportClause } from "typescript";
 
 const Container = styled.div`
   position: absolute;
@@ -8,12 +9,17 @@ const Container = styled.div`
   transform: translate(-50%, -50%);
   padding: 20px;
   display: flex;
+  flex-direction: column;
   align-items: start;
   justify-content: start;
   width: 1000px;
   border-radius: 4px;
   height: 300px;
   box-shadow: grey 0px -2px 6px 0px inset;
+`;
+
+const String = styled.div`
+  display: flex;
 `;
 
 const Letter = styled.p`
@@ -24,18 +30,28 @@ const Letter = styled.p`
 
 interface InputBox {
   inputRef: RefObject<HTMLDivElement>;
-  templateString: string;
+  templateString: Array<string>;
 }
 
 const InputBox: React.FC<InputBox> = ({ inputRef, templateString }) => {
   return (
     <Container ref={inputRef}>
-      {templateString.split("").map((char, index) => {
-        if (char == " ") {
-          return <Letter key={index}>&nbsp;</Letter>;
-        } else {
-          return <Letter key={index}>{char}</Letter>;
-        }
+      {templateString.map((string, stringIndex) => {
+        return (
+          <>
+            <String key={stringIndex}>
+              {string.split("").map((char, index) => {
+                if (char == " ") {
+                  return (
+                    <Letter key={stringIndex + index}>&nbsp;&nbsp;</Letter>
+                  );
+                } else {
+                  return <Letter key={stringIndex + index}>{char}</Letter>;
+                }
+              })}
+            </String>
+          </>
+        );
       })}
     </Container>
   );

@@ -6,3 +6,12 @@
   opacity: 1 !important;
   color: red !important;
 }
+
+.incorrectSpace {
+  @extend .incorrect;
+  width: 10px;
+}
+
+.incorrectSpace::before {
+  content: "_";
+}
